@@ -1,0 +1,23 @@
+@import "base.css";
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#root {
+  width: min(100%, 800px);
+  max-width: 800px;
+}
+
+nav ul {
+  display: flex;
+  gap: 1em;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}

@@ -1,0 +1,84 @@
+<h1>Create an account</h1>
+<form action="/register" method="post">
+  <div class="flex-col gap-s">
+    <label for="first-name">First name</label>
+    <input
+      type="text"
+      id="first-name"
+      placeholder="John"
+      required
+      name="firstName"
+      value="<%= values.firstName %>"
+      maxlength="<%= limits.MAX_FIRST_NAME_LENGTH %>"
+      class="<%= errors.firstName ? "error" : "" %>"
+    />
+    <% if (errors.firstName) { %>
+    <div class="input-error"><%= errors.firstName.msg %></div>
+    <% } %>
+  </div>
+
+  <div class="flex-col gap-s">
+    <label for="last-name">Last name</label>
+    <input
+      type="text"
+      id="last-name"
+      placeholder="Doe"
+      required
+      name="lastName"
+      value="<%= values.lastName %>"
+      maxlength="<%= limits.MAX_LAST_NAME_LENGTH %>"
+      class="<%= errors.lastName ? "error" : "" %>"
+    />
+    <% if (errors.lastName) { %>
+    <div class="input-error"><%= errors.lastName.msg %></div>
+    <% } %>
+  </div>
+
+  <div class="flex-col gap-s">
+    <label for="email">Email</label>
+    <input
+      type="email"
+      id="email"
+      placeholder="your@email.com"
+      required
+      name="email"
+      value="<%= values.email %>"
+      maxlength="<%= limits.MAX_EMAIL_LENGTH %>"
+      class="<%= errors.email ? "error" : "" %>"
+    />
+    <% if (errors.email) { %>
+    <div class="input-error"><%= errors.email.msg %></div>
+    <% } %>
+  </div>
+
+  <div class="flex-col gap-s">
+    <label for="password">Password (at least <%= limits.MIN_PASSWORD_LENGTH %> characters)</label>
+    <input
+      type="password"
+      id="password"
+      required
+      name="password"
+      minlength="<%= limits.MIN_PASSWORD_LENGTH %>"
+      maxlength="<%= limits.MAX_PASSWORD_LENGTH %>"
+      class="<%= errors.password ? "error" : "" %>"
+    />
+    <% if (errors.password) { %>
+    <div class="input-error"><%= errors.password.msg %></div>
+    <% } %>
+  </div>
+
+  <div class="flex-col gap-s">
+    <label for="password-repeat">Repeat password</label>
+    <input
+        type="password"
+        id="password-repeat"
+        required
+        name="passwordRepeat"  
+      class="<%= errors.passwordRepeat ? "error" : "" %>" />
+    <% if (errors.passwordRepeat) { %>
+    <div class="input-error"><%= errors.passwordRepeat.msg %></div>
+    <% } %>
+  </div>
+
+  <button type="submit">Create Account</button>
+</form>

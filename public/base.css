@@ -1,0 +1,127 @@
+:root {
+  --color-red: #fa003f;
+  --color-green: #00bb77;
+  --color-blue: #305cde;
+  --color-black: #3c3c43;
+  --color-white: #ffffff;
+  --color-light-gray: #f4f5fc;
+  --color-gray: #a8aab9;
+  --color-dark-gray: #57576d;
+  --color-purple: #6b1eb9;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: system-ui, sans-serif;
+  color: var(--color-black);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+input,
+button,
+textarea,
+select,
+fieldset {
+  font-family: inherit;
+  font-size: inherit;
+  border: 1px solid var(--color-gray);
+  padding: 0.5em;
+}
+
+label {
+  align-self: start;
+  font-weight: 500;
+}
+
+input:focus,
+textarea:focus {
+  outline: 2px solid var(--color-purple);
+  border-color: var(--color-white);
+}
+
+input.error {
+  outline: 2px solid var(--color-red);
+  border-color: var(--color-white);
+}
+
+button {
+  padding: 0.75em 0.75em;
+  color: #fff;
+  background-color: var(--color-purple);
+  border: 0;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  align-self: start;
+}
+
+a {
+  color: var(--color-purple);
+  font-weight: 500;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: 1em;
+}
+
+.input-error {
+  color: var(--color-red);
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.gap-s {
+  gap: 0.5em;
+}

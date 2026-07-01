@@ -4,9 +4,11 @@
     "dev": "node --env-file=.env --watch app.js",
     "format": "prettier * -w -u --no-error-on-unmatched-pattern --log-level error",
     "lint": "eslint",
-    "check": "npm run format && npm run lint"
+    "check": "npm run format && npm run lint",
+    "setup-db": "node --env-file=.env db/setup.js"
   },
   "dependencies": {
+    "bcryptjs": "^3.0.3",
     "connect-pg-simple": "^10.0.0",
     "ejs": "^6.0.1",
     "express": "^5.2.1",
