@@ -1,4 +1,5 @@
 import { Client } from "pg";
+import roles from "../roles.js";
 
 const tables = `
   create table if not exists users (
@@ -6,7 +7,8 @@ const tables = `
     first_name varchar(255) not null,
     last_name  varchar(255) not null,
     email      varchar(255) not null unique,
-    password   varchar(255) not null);
+    password   varchar(255) not null,
+    role       smallint not null default ${roles.NORMAL});
   `;
 
 async function main() {

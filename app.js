@@ -8,6 +8,7 @@ import * as auth from "./auth.js";
 import { pool } from "./db/queries.js";
 import * as register from "./controllers/register.js";
 import * as login from "./controllers/login.js";
+import * as secret from "./controllers/secret.js";
 
 const app = express();
 const PostgresStore = connectPgSimple(session);
@@ -54,6 +55,8 @@ app.post(
 app.get("/login", auth.unauthenticatedOnly, login.get);
 app.post("/login", auth.unauthenticatedOnly, auth.login);
 app.get("/logout", auth.logout);
+app.get("/secret", auth.authenticatedOnly, auth.normalUsersOnly, secret.get);
+app.post("/secret", auth.authenticatedOnly, auth.normalUsersOnly, secret.post);
 
 app.use((err, req, res, _next) => {
   console.error(err.stack);

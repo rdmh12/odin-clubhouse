@@ -11,6 +11,9 @@
       <header class="flex-row gap-m align-end">
         <% if (locals.user) { %>
         <div class="stretch">Logged in as <span class="bold"><%= user.first_name %> <%= user.last_name %></span></div>
+        <% if (!user.isMember) { %>
+        <a href="/secret">Membership</a>
+        <% } %>
         <a href="/logout">Log Out</a>
         <% } else { %>
         <a href="/login">Log In</a>

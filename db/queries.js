@@ -1,4 +1,5 @@
 import { Pool } from "pg";
+import roles from "../roles.js";
 
 export const pool = new Pool({
   connectionString: process.env.DATABASE,
@@ -38,10 +39,17 @@ export async function getUserCredentials(email) {
 export async function getUser(id) {
   const result = await pool.query(
     `
-    select id, first_name, last_name, email
+    select id, first_name, last_name, email, role
     from users
     where id = $1;`,
     [id],
   );
   return result.rowCount === 1 ? result.rows[0] : null;
+}
+
+export async function promoteUserToMember(userId) {
+  await pool.query("update users set role = $1 where id = $2", [
+    roles.MEMBER,
+    userId,
+  ]);
 }
