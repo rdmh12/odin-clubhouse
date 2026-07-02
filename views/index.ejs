@@ -8,6 +8,15 @@
   </head>
   <body>
     <div id="root">
+      <header class="flex-row gap-m align-end">
+        <% if (locals.user) { %>
+        <div class="stretch">Logged in as <span class="bold"><%= user.first_name %> <%= user.last_name %></span></div>
+        <a href="/logout">Log Out</a>
+        <% } else { %>
+        <a href="/login">Log In</a>
+        <a href="/register">Register</a>
+        <% } %>
+      </header>
       <main><%- include(content) %></main>
     </div>
   </body>

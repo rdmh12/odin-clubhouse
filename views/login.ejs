@@ -1,0 +1,18 @@
+<h1>Log in</h1>
+
+<% messages.forEach((message) => { %>
+<div class="error-msg"><%= message %></div>
+<% }) %>
+
+<form action="/login" method="post">
+  <div class="flex-col gap-s">
+    <label for="email">Email</label>
+    <input type="text" id="email" required placeholder="your@email.com" name="username" />
+  </div>
+  <div class="flex-col gap-s">
+    <label for="password">Password</label>
+    <input type="password" id="password" required name="password" />
+  </div>
+  <button type="submit">Log in</button>
+</form>
+<div>Don't have an account? <a href="register">Register now</a></div>

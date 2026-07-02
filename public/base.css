@@ -117,11 +117,36 @@ a {
   color: var(--color-red);
 }
 
+.error-msg {
+  color: var(--color-red);
+}
+
 .flex-col {
   display: flex;
   flex-direction: column;
 }
 
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
 .gap-s {
   gap: 0.5em;
+}
+
+.gap-m {
+  gap: 1em;
+}
+
+.align-end {
+  justify-content: end;
+}
+
+.stretch {
+  flex: 1;
+}
+
+.bold {
+  font-weight: 700;
 }
