@@ -1,0 +1,10 @@
+<form action="/messages/new" method="post" class="flex-col gap-m">
+  <div class="flex-col gap-s">
+    <label for="text">Text</label>
+    <textarea id="text" name="text" required rows="12"></textarea>
+    <% if (errors.text) { %>
+    <div class="input-error"><%= errors.text.msg %></div>
+    <% } %>
+  </div>
+  <button type="submit">Submit Message</button>
+</form>

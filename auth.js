@@ -36,6 +36,7 @@ passport.deserializeUser(async (id, done) => {
     return done(null, {
       ...user,
       isMember: user.role !== roles.NORMAL,
+      isAdmin: user.role === roles.ADMIN,
     });
   } catch (err) {
     return done(err);
@@ -54,6 +55,18 @@ export function unauthenticatedOnly(req, res, next) {
 
 export function normalUsersOnly(req, res, next) {
   if (req.user.role !== roles.NORMAL) return res.redirect("/");
+  return next();
+}
+
+export function membersOnly(req, res, next) {
+  if (req.user.role === roles.NORMAL)
+    return res.render("index", { content: "401" });
+  return next();
+}
+
+export function adminOnly(req, res, next) {
+  if (req.user.role !== roles.ADMIN)
+    return res.render("index", { content: "401" });
   return next();
 }
 

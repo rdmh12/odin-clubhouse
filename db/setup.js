@@ -9,6 +9,12 @@ const tables = `
     email      varchar(255) not null unique,
     password   varchar(255) not null,
     role       smallint not null default ${roles.NORMAL});
+
+  create table if not exists messages (
+    id         integer primary key generated always as identity,
+    user_id    integer not null references users (id),
+    created    timestamp not null,
+    text       text not null);
   `;
 
 async function main() {
@@ -17,7 +23,6 @@ async function main() {
   });
 
   await client.connect();
-  await client.query("drop table if exists users;");
   await client.query(tables);
   await client.end();
 }

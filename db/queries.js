@@ -53,3 +53,25 @@ export async function promoteUserToMember(userId) {
     userId,
   ]);
 }
+
+export async function createMessage(userId, text) {
+  await pool.query(
+    `
+    insert into messages (user_id, created, text)
+    values ($1, current_timestamp, $2);`,
+    [userId, text],
+  );
+}
+
+export async function getMessages() {
+  const { rows } = await pool.query(`
+    select messages.id, messages.created, messages.text, users.first_name, users.last_name
+    from messages
+    join users on messages.user_id = users.id
+    order by messages.created desc;`);
+  return rows;
+}
+
+export async function deleteMessage(id) {
+  await pool.query("delete from messages where id = $1;", [id]);
+}

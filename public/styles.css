@@ -21,3 +21,21 @@ main {
   flex-direction: column;
   gap: 1em;
 }
+
+.message {
+  border: 1px solid var(--color-gray);
+  padding: 0.5em;
+}
+
+.message-text {
+  padding: 1em;
+}
+
+.delete-form {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.delete-form button {
+  padding: 0.5em;
+}

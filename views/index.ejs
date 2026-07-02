@@ -8,9 +8,11 @@
   </head>
   <body>
     <div id="root">
-      <header class="flex-row gap-m align-end">
+      <header class="flex-row gap-m">
+        <a href="/messages">Messages</a>
         <% if (locals.user) { %>
         <div class="stretch">Logged in as <span class="bold"><%= user.first_name %> <%= user.last_name %></span></div>
+        <a href="/messages/new">Write Message</a>
         <% if (!user.isMember) { %>
         <a href="/secret">Membership</a>
         <% } %>

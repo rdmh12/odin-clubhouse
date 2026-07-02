@@ -1,0 +1,23 @@
+<% messages.forEach((message) => { %>
+<div class="message">
+  <% if (locals.user && locals.user.isMember) { %>
+  <div class="small">
+    On <span class="bold"><%= message.created.toLocaleString() %></span> user
+    <span class="bold"
+      ><%= `${message.first_name} ${message.last_name}` %></span
+    >
+    wrote:
+  </div>
+  <% } %>
+  <div class="message-text preserve-whitespace"><%= message.text %></div>
+  <% if (locals.user && locals.user.isAdmin) { %>
+  <form
+    action="/messages/delete/<%= message.id %>"
+    method="post"
+    class="delete-form"
+  >
+    <button type="submit">Delete</button>
+  </form>
+  <% } %>
+</div>
+<% }) %>
