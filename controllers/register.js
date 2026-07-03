@@ -30,14 +30,17 @@ export async function post(req, res, next) {
   try {
     const password = await bcrypt.hash(values.password, 10);
 
-    await db.createUser({
+    const id = await db.createUser({
       firstName: values.firstName,
       lastName: values.lastName,
       email: values.email,
       password,
     });
 
-    return res.redirect("/");
+    req.login(id, (err) => {
+      if (err) return next(err);
+      return res.redirect("/");
+    });
   } catch (err) {
     next(err);
   }

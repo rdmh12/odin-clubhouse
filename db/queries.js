@@ -6,12 +6,14 @@ export const pool = new Pool({
 });
 
 export async function createUser(user) {
-  await pool.query(
+  const { rows } = await pool.query(
     `
     insert into users (first_name, last_name, email, password)
-    values ($1, $2, $3, $4);`,
+    values ($1, $2, $3, $4)
+    returning id;`,
     [user.firstName, user.lastName, user.email, user.password],
   );
+  return rows[0].id;
 }
 
 export async function getUserEmailUsed(email) {
