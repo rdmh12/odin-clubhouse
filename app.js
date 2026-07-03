@@ -73,6 +73,10 @@ app.post(
   messages.deletePost,
 );
 
+app.use((req, res) => {
+  res.status(404).render("index", { content: "404" });
+});
+
 app.use((err, req, res, _next) => {
   console.error(err.stack);
   res.status(500).render("index", { content: "500" });
